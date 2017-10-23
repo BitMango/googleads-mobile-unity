@@ -112,6 +112,12 @@ namespace GoogleMobileAds.iOS
             this.InterstitialPtr = IntPtr.Zero;
         }
 
+        // Returns the mediation adapter class name.
+        public string GetMediationAdapterInterstitial()
+        {
+            return Externs.GADUGetMediationAdapterInterstitial(this.InterstitialPtr);
+        }
+
         public void Dispose()
         {
             this.DestroyInterstitial();

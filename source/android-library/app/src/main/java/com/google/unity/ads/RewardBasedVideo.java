@@ -49,6 +49,8 @@ public class RewardBasedVideo {
      */
     private boolean isLoaded;
 
+    private String mediationAdapterClassName;
+
     public RewardBasedVideo(Activity activity, UnityRewardBasedVideoAdListener adListener) {
         this.activity = activity;
         this.adListener = adListener;
@@ -67,6 +69,7 @@ public class RewardBasedVideo {
                     @Override
                     public void onRewardedVideoAdLoaded() {
                         isLoaded = true;
+                        mediationAdapterClassName = rewardBasedVideo.getMediationAdapterClassName();
                         adListener.onAdLoaded();
                     }
 
@@ -149,6 +152,13 @@ public class RewardBasedVideo {
     public void destroy() {
         // Currently there is no destroy() method for the RewardedVideoAd class. This method is a
         // placeholder in case there is any cleanup to do here in the future.
+    }
+
+    /**
+     * Returns the mediation adapter class name.
+     */
+    public String getMediationAdapterClassName() {
+        return mediationAdapterClassName;
     }
 }
 

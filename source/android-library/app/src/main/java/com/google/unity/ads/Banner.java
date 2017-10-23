@@ -80,6 +80,8 @@ public class Banner {
      */
     private UnityAdListener mUnityListener;
 
+    private String mediationAdapterClassName;
+
     /**
      * Creates an instance of {@code Banner}.
      *
@@ -149,6 +151,7 @@ public class Banner {
                     if (!mPopupWindow.isShowing() && !mHidden) {
                         showPopUpWindow();
                     }
+                    mediationAdapterClassName = mAdView.getMediationAdapterClassName();
                     mUnityListener.onAdLoaded();
                 }
             }
@@ -283,5 +286,12 @@ public class Banner {
                 }
             }
         });
+    }
+
+    /**
+     * Returns the mediation adapter class name.
+     */
+    public String getMediationAdapterClassName() {
+        return mediationAdapterClassName;
     }
 }

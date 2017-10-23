@@ -109,5 +109,11 @@ namespace GoogleMobileAds.Api
         {
             client.DestroyInterstitial();
         }
+
+        // Returns the mediation adapter class name.
+        public string GetMediationAdapterClassName()
+        {
+            return client.GetMediationAdapterInterstitial();
+        }
     }
 }

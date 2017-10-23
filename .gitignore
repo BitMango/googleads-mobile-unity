@@ -1,0 +1,9 @@
+*.swp
+.gradle
+tags
+tags.meta
+source/plugin/Library
+source/plugin/ProjectSettings
+source/plugin/Temp
+source/plugin/*.sln
+source/plugin/*.csproj

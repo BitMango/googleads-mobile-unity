@@ -86,6 +86,12 @@ namespace GoogleMobileAds.Api
             client.DestroyBannerView();
         }
 
+        // Returns the mediation adapter class name.
+        public string GetMediationAdapterClassName()
+        {
+            return client.GetMediationAdapterBannerView();
+        }
+
         private void ConfigureBannerEvents()
         {
             this.client.OnAdLoaded += (sender, args) =>

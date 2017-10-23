@@ -71,6 +71,11 @@ namespace GoogleMobileAds.Android
             androidRewardBasedVideo.Call("destroy");
         }
 
+        public string GetMediationAdapterRewardBasedVideoAd()
+        {
+            return androidRewardBasedVideo.Call<string>("getMediationAdapterClassName");
+        }
+
         #endregion
 
         #region Callbacks from UnityRewardBasedVideoAdListener.
