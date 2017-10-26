@@ -550,18 +550,18 @@ void GADURelease(GADUTypeRef ref) {
 
 /// Returns the mediation adapter class name.
 const char *GADUGetMediationAdapterBannerView(GADUTypeBannerRef ref) {
-  GADUBanner *banner = (__bridge GADUBanner *)ref;
-  return cStringCopy([banner.bannerView.adNetworkClassName UTF8String]);
+  GADUBanner *banner = (__bridge GADUBanner *)banner;
+  return cStringCopy(banner.adNetworkClassName);
 }
 
 /// Returns the mediation adapter class name.
 const char *GADUGetMediationAdapterInterstitial(GADUTypeInterstitialRef ref) {
-  GADUInterstitial *interstitial = (__bridge GADUInterstitial*)ref;
-  return cStringCopy([interstitial.interstitial.adNetworkClassName UTF8String]);
+  GADUInterstitial *interstitial = (__bridge GADUBanner *)banner;
+  return cStringCopy(interstitial.adNetworkClassName);
 }
 
 /// Returns the mediation adapter class name.
 const char *GADUGetMediationAdapterRewardBasedVideoAd(GADUTypeRewardBasedVideoAdRef ref) {
-  GADURewardBasedVideoAd *rewardBasedVideoAd = (__bridge GADURewardBasedVideoAd*)ref;
-  return cStringCopy([rewardBasedVideoAd.rewardBasedVideo.adNetworkClassName UTF8String]);
+  GADURewardBasedVideoAd *rewardBasedVideoAd = (__bridge GADUBanner *)banner;
+  return cStringCopy(rewardBasedVideoAd.adNetworkClassName);
 }
