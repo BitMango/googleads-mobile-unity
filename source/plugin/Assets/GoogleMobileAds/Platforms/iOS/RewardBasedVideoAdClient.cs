@@ -126,12 +126,6 @@ namespace GoogleMobileAds.iOS
             this.RewardBasedVideoAdPtr = IntPtr.Zero;
         }
 
-        // Returns the mediation adapter class name.
-        public string GetMediationAdapterRewardBasedVideoAd()
-        {
-            return Externs.GADUGetMediationAdapterRewardBasedVideoAd(this.rewardBasedVideoAdClientPtr);
-        }
-
         public void Dispose()
         {
             this.DestroyRewardedVideoAd();

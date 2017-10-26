@@ -132,11 +132,5 @@ namespace GoogleMobileAds.Api
         {
             client.ShowRewardBasedVideoAd();
         }
-
-        // Returns the mediation adapter class name.
-        public string GetMediationAdapterClassName()
-        {
-            return client.GetMediationAdapterRewardBasedVideoAd();
-        }
     }
 }

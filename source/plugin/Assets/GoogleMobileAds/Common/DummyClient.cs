@@ -183,23 +183,5 @@ namespace GoogleMobileAds.Common
         {
             Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
         }
-
-        public string GetMediationAdapterBannerView()
-        {
-            Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
-            return "dummy";
-        }
-
-        public string GetMediationAdapterInterstitial()
-        {
-            Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
-            return "dummy";
-        }
-
-        public string GetMediationAdapterRewardBasedVideoAd()
-        {
-            Debug.Log("Dummy " + MethodBase.GetCurrentMethod().Name);
-            return "dummy";
-        }
     }
 }

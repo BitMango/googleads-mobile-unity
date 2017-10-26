@@ -46,8 +46,5 @@ namespace GoogleMobileAds.Common
 
         // Shows the reward based video ad on the screen.
         void ShowRewardBasedVideoAd();
-
-        // Returns the mediation adapter class name.
-        string GetMediationAdapterRewardBasedVideoAd();
     }
 }

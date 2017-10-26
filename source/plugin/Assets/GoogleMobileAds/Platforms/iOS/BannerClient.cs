@@ -156,12 +156,6 @@ namespace GoogleMobileAds.iOS
             this.BannerViewPtr = IntPtr.Zero;
         }
 
-        // Returns the mediation adapter class name.
-        public string GetMediationAdapterBannerView()
-        {
-            return Externs.GADUGetMediationAdapterBannerView(this.BannerViewPtr);
-        }
-
         public void Dispose()
         {
             this.DestroyBannerView();

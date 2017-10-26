@@ -46,8 +46,6 @@ public class Interstitial {
      */
     private boolean isLoaded;
 
-    private String mediationAdapterClassName;
-
     public Interstitial(Activity activity, UnityAdListener adListener) {
         this.activity = activity;
         this.adListener = adListener;
@@ -69,7 +67,6 @@ public class Interstitial {
                     @Override
                     public void onAdLoaded() {
                         isLoaded = true;
-                        mediationAdapterClassName = interstitial.getMediationAdapterClassName();
                         adListener.onAdLoaded();
                     }
 
@@ -141,12 +138,5 @@ public class Interstitial {
     public void destroy() {
         // Currently there is no interstitial.destroy() method. This method is a placeholder in case
         // there is any cleanup to do here in the future.
-    }
-
-    /**
-     * Returns the mediation adapter class name.
-     */
-    public String getMediationAdapterClassName() {
-        return mediationAdapterClassName;
     }
 }
