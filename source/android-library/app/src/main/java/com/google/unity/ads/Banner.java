@@ -213,11 +213,11 @@ public class Banner {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 mPopupWindow.showAsDropDown(anchorView,
                         (int) PluginUtils.convertDpToPixel(mHorizontalOffset),
-                        -anchorView.getHeight()
-                                + (int) PluginUtils.convertDpToPixel(mVerticalOffset));
+                        //-anchorView.getHeight() + 
+                        (int) PluginUtils.convertDpToPixel(mVerticalOffset));
             } else {
                 mPopupWindow.showAtLocation(
-                        anchorView, Gravity.NO_GRAVITY,
+                        anchorView, Gravity.BOTTOM,
                         (int) PluginUtils.convertDpToPixel(mHorizontalOffset),
                         (int) PluginUtils.convertDpToPixel(mVerticalOffset));
             }
