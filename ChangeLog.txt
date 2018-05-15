@@ -1,5 +1,134 @@
 Google Mobile Ads Unity Plugin Change Log
 
+**************
+Version 3.13.1
+**************
+
+Plugin:
+- Fixed issue where banner ads reposition to top of screen after a full
+screen ad is displayed.
+
+Built and tested with:
+- Google Play services 12.0.1
+- Google Mobile Ads iOS SDK 7.30.0
+- Unity Jar Resolver 1.2.64.0
+
+**************
+Version 3.13.0
+**************
+
+Plugin:
+- Added `OnAdCompleted` ad event to rewarded video ads.
+- Removed support for Native Ads Express.
+
+Mediation packages:
+- Added Chartboost mediation support package.
+- Added MoPub mediation support package.
+- Updated AppLovin Unity package to v1.2.1.
+- Updated AdColony Unity package to v1.0.1.
+- Updated myTarget Unity package to v2.0.0.
+
+Built and tested with:
+- Google Play services 12.0.1
+- Google Mobile Ads iOS SDK 7.30.0
+- Unity Jar Resolver 1.2.64.0
+
+**************
+Version 3.12.0
+**************
+
+Plugin:
+- Added `setUserId` API to rewarded video ads to identify users in
+server-to-server reward callbacks.
+- Removed functionality that forced ad events to be invoked on the
+main thread.
+
+Mediation packages:
+- Updated maio Unity package to v1.0.1.
+
+Built and tested with:
+- Google Play services 11.8.0
+- Google Mobile Ads iOS SDK 7.29.0
+- Unity Jar Resolver 1.2.61.0
+
+**************
+Version 3.11.1
+**************
+
+Plugin:
+- Fixed issue where calling GetWidthInPixels() or GetHeightInPixels() resulted
+in a null pointer exception.
+
+Mediation packages:
+- Added Facebook mediation support package.
+
+Built and tested with:
+- Google Play services 11.8.0
+- Google Mobile Ads iOS SDK 7.28.0
+- Unity Jar Resolver 1.2.61.0
+
+**************
+Version 3.11.0
+**************
+
+Plugin:
+- Updated Android ad events to be invoked on the main thread.
+- Added `MobileAds.SetiOSAppPauseOnBackground()` method to pause iOS apps when
+displaying full screen ads.
+- Fixed issue were banners repositioned incorrectly following an orienation
+change.
+
+Mediation packages:
+- Added maio mediation support package.
+- Added nend mediation support package.
+
+Built and tested with:
+- Google Play services 11.8.0
+- Google Mobile Ads iOS SDK 7.27.0
+- Unity Jar Resolver 1.2.61.0
+
+**************
+Version 3.10.0
+**************
+
+Plugin:
+- Updated Smart Banner positioning to render within safe area on iOS 11.
+- Added API to return height and width of BannerView in pixels.
+- Added SetPosition method to reposition banner ads.
+- Updated AppLovin Unity mediation package to support AppLovin initialization
+integration.
+
+Mediation packages:
+- Added InMobi mediation support package.
+- Added Tapjoy mediation support package.
+- Added Unity Ads mediation support package.
+- Added myTarget mediation support package.
+
+Built and tested with:
+- Google Play services 11.6.2
+- Google Mobile Ads iOS SDK 7.27.0
+- Unity Jar Resolver 1.2.59.0
+
+*************
+Version 3.9.0
+*************
+
+Plugin:
+- Implemented workaround for issue where ad views are rendered in incorrect
+position.
+- Resolved compatibility issues with Gradle 4.
+- Resovled comnpatilbity issues with older versions of Xcode.
+
+Mediation packages:
+- Added API for video ad volume control.
+- Added AdColony mediation support package.
+- Added AppLovin mediation support package.
+
+Built and tested with:
+- Google Play services 11.6.0
+- Google Mobile Ads iOS SDK 7.25.0
+- Unity Jar Resolver 1.2.59.0
+
 *************
 Version 3.8.0
 *************
