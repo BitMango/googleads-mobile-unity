@@ -20,6 +20,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,8 +97,9 @@ public class Banner {
      * A {@code ViewTreeObserver.OnGlobalLayoutListener} used to detect if a full screen ad was
      * shown while a banner ad was on screen.
      */
-    private ViewTreeObserver.OnGlobalLayoutListener mViewTreeLayoutChangeListener;    
+    private ViewTreeObserver.OnGlobalLayoutListener mViewTreeLayoutChangeListener;
 
+    private int _notchHeight = 0;
     /**
      * Creates an instance of {@code Banner}.
      *
@@ -225,6 +227,21 @@ public class Banner {
     
     }
 
+	public int getNotchHeight() {
+
+    	if(_notchHeight != 0) return _notchHeight;
+
+    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+			View anchorView = mUnityPlayerActivity.getWindow().getDecorView().getRootView();
+			Display display = mUnityPlayerActivity.getWindowManager().getDefaultDisplay();
+			Point realSize = new Point();
+			display.getRealSize(realSize);
+			int real_height = realSize.y;
+			_notchHeight = real_height - anchorView.getHeight();
+		}
+		return _notchHeight;
+	}
+
     private void createPopupWindow() {
         // Workaround for issue where popUpWindow will not resize to the full width
         // of the screen to accommodate a smart banner.
@@ -242,6 +259,13 @@ public class Banner {
         // devices (eg. Huawei devices).
         PluginUtils.setPopUpWindowLayoutType(mPopupWindow,
 					     WindowManager.LayoutParams.TYPE_APPLICATION_SUB_PANEL);
+
+		int anchorViewHeight = mUnityPlayerActivity.getWindow().getDecorView().getRootView().getHeight();
+		int notchHeight = getNotchHeight();
+		WindowManager.LayoutParams params = mUnityPlayerActivity.getWindow().getAttributes();
+		params.height = anchorViewHeight - notchHeight;
+		params.y = -notchHeight;
+		mUnityPlayerActivity.getWindow().setAttributes(params);
     }
 
     private void showPopUpWindow() {
@@ -267,17 +291,23 @@ public class Banner {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 int adViewWidth = mAdView.getAdSize().getWidthInPixels(mUnityPlayerActivity);
                 int adViewHeight = mAdView.getAdSize().getHeightInPixels(mUnityPlayerActivity);
-
+/*
                 mPopupWindow.showAsDropDown(anchorView,
 					    PluginUtils.getHorizontalOffsetForPositionCode(mPositionCode, adViewWidth,
 											   anchorView.getWidth()),
 					    PluginUtils.getVerticalOffsetForPositionCode(mPositionCode, adViewHeight,
 											 anchorView.getHeight()));
+*/
+				int positionX = (int)PluginUtils.convertPixelsToDp(
+						PluginUtils.getHorizontalOffsetForPositionCode(mPositionCode, adViewWidth, anchorView.getWidth())
+				);
+				int positionY = (int)PluginUtils.convertPixelsToDp(anchorView.getHeight() + getNotchHeight() - adViewHeight);
+				setPosition(positionX, positionY);
             } else {
                 mPopupWindow.showAtLocation(anchorView,
 					    PluginUtils.getLayoutGravityForPositionCode(mPositionCode), 0, 0);
             }
-        }
+	    }
     }
 
     /**
