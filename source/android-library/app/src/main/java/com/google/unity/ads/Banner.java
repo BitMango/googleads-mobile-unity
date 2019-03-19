@@ -99,7 +99,8 @@ public class Banner {
      */
     private ViewTreeObserver.OnGlobalLayoutListener mViewTreeLayoutChangeListener;
 
-    private int _notchHeight = 0;
+    private static int _originAnchorViewHeight = 0;
+    private static int _notchHeight = 0;
     /**
      * Creates an instance of {@code Banner}.
      *
@@ -227,17 +228,26 @@ public class Banner {
     
     }
 
+    public int getOriginAnchorViewHeight() {
+
+    	if(_originAnchorViewHeight != 0) return _originAnchorViewHeight;
+
+		View anchorView = mUnityPlayerActivity.getWindow().getDecorView().getRootView();
+		_originAnchorViewHeight = anchorView.getHeight();
+
+		return _originAnchorViewHeight;
+	}
+
 	public int getNotchHeight() {
 
     	if(_notchHeight != 0) return _notchHeight;
 
     	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-			View anchorView = mUnityPlayerActivity.getWindow().getDecorView().getRootView();
 			Display display = mUnityPlayerActivity.getWindowManager().getDefaultDisplay();
 			Point realSize = new Point();
 			display.getRealSize(realSize);
 			int real_height = realSize.y;
-			_notchHeight = real_height - anchorView.getHeight();
+			_notchHeight = real_height - getOriginAnchorViewHeight();
 		}
 		return _notchHeight;
 	}
@@ -260,12 +270,19 @@ public class Banner {
         PluginUtils.setPopUpWindowLayoutType(mPopupWindow,
 					     WindowManager.LayoutParams.TYPE_APPLICATION_SUB_PANEL);
 
+		//cut off notch display
 		int anchorViewHeight = mUnityPlayerActivity.getWindow().getDecorView().getRootView().getHeight();
-		int notchHeight = getNotchHeight();
-		WindowManager.LayoutParams params = mUnityPlayerActivity.getWindow().getAttributes();
-		params.height = anchorViewHeight - notchHeight;
-		params.y = -notchHeight;
-		mUnityPlayerActivity.getWindow().setAttributes(params);
+		int originAnchorViewHeight = getOriginAnchorViewHeight();
+
+		if(anchorViewHeight == originAnchorViewHeight) {
+
+			int notchHeight = getNotchHeight();
+			WindowManager.LayoutParams params = mUnityPlayerActivity.getWindow().getAttributes();
+			params.height = originAnchorViewHeight - notchHeight;
+			params.y = -notchHeight;
+			mUnityPlayerActivity.getWindow().setAttributes(params);
+		}
+
     }
 
     private void showPopUpWindow() {
