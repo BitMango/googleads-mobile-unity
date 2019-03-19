@@ -273,10 +273,10 @@ public class Banner {
 		//cut off notch display
 		int anchorViewHeight = mUnityPlayerActivity.getWindow().getDecorView().getRootView().getHeight();
 		int originAnchorViewHeight = getOriginAnchorViewHeight();
+		int notchHeight = getNotchHeight();
 
-		if(anchorViewHeight == originAnchorViewHeight) {
+		if(notchHeight != 0 && anchorViewHeight == originAnchorViewHeight) {
 
-			int notchHeight = getNotchHeight();
 			WindowManager.LayoutParams params = mUnityPlayerActivity.getWindow().getAttributes();
 			params.height = originAnchorViewHeight - notchHeight;
 			params.y = -notchHeight;
